@@ -5,7 +5,7 @@ from multiply import multiply
 from divide import divide
 
 def main():
-    st.title("Simple Calculator")
+    st.title("Faiqa Calculator")
 
     # Taking user input using Streamlit's widgets
     num1 = st.number_input("Enter the first number:", format="%.2f")
