@@ -1,35 +1,32 @@
+import streamlit as st
 from add import add
 from subtract import subtract
 from multiply import multiply
 from divide import divide
 
 def main():
-    while True:
-        try:
-            num1 = float(input("Enter the first number: "))
-            num2 = float(input("Enter the second number: "))
-            operator = input("Enter an operator (+, -, *, /): ")
+    st.title("Simple Calculator")
 
-            if operator == '+':
-                result = add(num1, num2)
-            elif operator == '-':
-                result = subtract(num1, num2)
-            elif operator == '*':
-                result = multiply(num1, num2)
-            elif operator == '/':
-                result = divide(num1, num2)
-            else:
-                print("Invalid operator!")
-                continue
+    # Taking user input using Streamlit's widgets
+    num1 = st.number_input("Enter the first number:", format="%f")
+    num2 = st.number_input("Enter the second number:", format="%f")
+    operator = st.selectbox("Choose an operator:", ('+', '-', '*', '/'))
 
-            print(f"The result is: {result}")
+    # Perform the calculation based on the selected operator
+    if st.button("Calculate"):
+        if operator == '+':
+            result = add(num1, num2)
+        elif operator == '-':
+            result = subtract(num1, num2)
+        elif operator == '*':
+            result = multiply(num1, num2)
+        elif operator == '/':
+            result = divide(num1, num2)
+        else:
+            st.error("Invalid operator selected!")
+            return
 
-        except ValueError:
-            print("Invalid input! Please enter numeric values.")
-
-        choice = input("Do you want to quit the calculator? (Y/N): ").strip().lower()
-        if choice == 'y':
-            break
+        st.success(f"The result is: {result}")
 
 if __name__ == "__main__":
     main()
