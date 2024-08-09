@@ -8,8 +8,8 @@ def main():
     st.title("Simple Calculator")
 
     # Taking user input using Streamlit's widgets
-    num1 = st.number_input("Enter the first number:", format="%f")
-    num2 = st.number_input("Enter the second number:", format="%f")
+    num1 = st.number_input("Enter the first number:", format="%.2f")
+    num2 = st.number_input("Enter the second number:", format="%.2f")
     operator = st.selectbox("Choose an operator:", ('+', '-', '*', '/'))
 
     # Perform the calculation based on the selected operator
